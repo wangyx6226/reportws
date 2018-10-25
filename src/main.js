@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import store from './store/index'
-import router from './router/index'
+import router from './router'
 import ElementUI from 'element-ui'
 import i18n from './common/lang' //国际化插件
 import VueTaber from 'vue-tabs' 
@@ -10,7 +10,8 @@ import camelCase from 'lodash/camelCase'
 import echarts from 'echarts'
 import Table from 'vue-antd-ui/lib/table'
 import App from './App.vue'
- 
+
+//CSS
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/stylus/index.styl'
 import '../vue-tabs.css'

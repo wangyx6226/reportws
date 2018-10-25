@@ -6,19 +6,27 @@ Vue.use(Router)
 // 引入组件
 import Login from '../views/Login'
 import Home from '../views/Home'
+// import { join } from 'path';
 
 const routes = [
   {
-    path: '/login',
+    path: '/',
     component: Login,
-    name: 'login',
+    name: 'login', //命名路由，可以通过name属性进行路由跳转，可有可无
     hidden: true
   }, 
   {
     path: '/main',
+    name: 'Home',
     component: Home,
   },
-
+  // {
+  //   path: '/user',
+  //   components: {
+  //     default: Login,
+  //     a: join
+  //   }
+  // }
   // {
   //   path: '/404',
   //   component: to404,
@@ -28,6 +36,7 @@ const routes = [
 ]
 
 export default new Router({
+  // mode: 'history',
   routes
 })
  

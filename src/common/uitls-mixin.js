@@ -34,7 +34,7 @@ export const userValidateMixin = {
 export const drawChartsMixin = {
 
   mounted() {
-    this.drowCharts()
+    // this.drowCharts()
     this.loadGrid()
   },
   
@@ -117,12 +117,12 @@ export const drawChartsMixin = {
       window.onresize = myLineChart.resize //自适应宽度
     },
 
-    loadGrid() {
-      let {
-        gridData,
-        gridColumns
-      } = this
-    }
+    // loadGrid() {
+    //   let {
+    //     gridData,
+    //     gridColumns
+    //   } = this
+    // }
 
 
 

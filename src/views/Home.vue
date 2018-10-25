@@ -4,7 +4,7 @@
       <my-sider></my-sider>
     </el-aside>
     <el-container>
-      <el-header height="40px">
+      <el-header height="50px">
         <div class="wrapper">
           <div class="user_info" v-if="userName">
             <span class="user_img">
@@ -14,7 +14,7 @@
             <span>|</span>
           </div>
           <div class="logout" @click="logOutMethod">Logout</div>
-          <el-dropdown size="mini" @command="changeLangMethod">
+          <el-dropdown @command="changeLangMethod">
             <span class="el-dropdown-link">
               Langrage<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
@@ -45,6 +45,10 @@
       MySider
     },
 
+    mounted() {
+      console.log(this.$route.params)
+    },
+
     computed: {
       userName() {
         return this.$store.getters.userName
@@ -59,8 +63,8 @@
 
       logOutMethod() {
         $UGet('logout').then(res => {
-          this.$store.dispatch('logOut')
-          this.$router.push('/login')
+          this.$store.dispatch('logOut') 
+          this.$router.push('/')
         }) 
       }
     }
@@ -80,7 +84,7 @@
       justify-content flex-end
       overflow hidden
       color #fff
-      font-size 12px
+      font-size 15px
       .wrapper
         display flex
         align-items center
@@ -102,18 +106,17 @@
           .user_name
             margin-right 15px
         .logout
-          margin-right 10px
+          margin-right 20px
           cursor pointer
         .el-dropdown-link 
           color #fff
-          font-size 12px
     .el-main
       position relative
       // background pink
       padding 0 20px 20px 20px
       .tabs-list-wrapper
         position fixed
-        top 40px
+        top 50px
         .tabs-list
           overflow hidden
       .tabs-content-wrapper

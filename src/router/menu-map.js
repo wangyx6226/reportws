@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/main',
+    path: '/main/:A',
     component: '',
     id: 'A',
     name: 'A_Song_Table',

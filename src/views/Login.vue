@@ -2,11 +2,12 @@
   <div class="login_page">
     <!-- lang controler -->
     <div class="lang_controler">
-      <el-select v-model="langrage" size="mini">
+      <el-select v-model="langrage" size="small">
         <el-option label="English" value="EN"></el-option>
         <el-option label="中文" value="CN"></el-option>
       </el-select>
     </div>
+    
     <!-- form -->
     <div class="form_container">
       <div class="logo_wrapper">
@@ -18,7 +19,6 @@
         :show-message="false"
         :status-icon="true"
         ref="form"
-        size="small" 
       >
         <el-form-item prop="username">
           <el-input   
@@ -53,6 +53,7 @@
         </el-form-item>
       </el-form>
     </div>
+
     <!-- copyright -->
     <p class="copyright">Copyright © 2016-2018 ULTIMATE All Rights Reserved</p>
   </div>
@@ -112,33 +113,44 @@
       //提交登录
       submitMethod() {
         /*
-        * 验证用户信息
-        * 调登录接口
-        * 将用户信息存在本地session中将用户信息存在本地session中
-        * 将用户信息保存在state中
-        * 错误提示
+        *【思路】
+         
+        * 验证用户输入
+        * 成功
+        *   调取登录接口
+        *     成功
+        *       将用户信息存在session中（控制过期时间）
+        *       将用户信息存入state中
+        *       提示错误信息（控制台不报错）
+        *     失败
+        *        提示错误（控制台不报错）
+        *        返回登录页,input获取焦点
+        * 失败
+        *   错误提示
+        *   input获取焦点
         */
-       this.$refs.form.validate((valid, object) => {
-        if(valid) {
-          this.logining = true //显示加载状态
-          let params = this.rulesForm
-          return $UPost(REQUEST_LOGIN, params).then( res => {
-            //错误判断..
-            // if(res && res.header.state !== '0') {
-            //   //等等
-            //   return 
-            // }
-            let userinfo = res.response.docs 
-            this.$store.dispatch('setUserInfo', userinfo).then(() => {
-              this.$router.push('/home')
-              this.logining = false
-            })
-          })
-        } else {
-          console.log(object)
-          return false
-        }
-       })
+
+      //  this.$refs.form.validate((valid, object) => {
+      //   if(valid) {
+      //     this.logining = true //显示加载状态
+      //     let params = this.rulesForm
+      //     return $UPost(REQUEST_LOGIN, params).then( res => {
+      //       //错误判断..
+      //       // if(res && res.header.state !== '0') {
+      //       //   //等等
+      //       //   return 
+      //       // }
+      //       let userinfo = res.response.docs 
+            // this.$store.dispatch('setUserInfo', userinfo).then(() => {
+              this.$router.push({name: 'Home', params:{usertype: 'admin'}})
+              // this.logining = false
+        //     })
+        //   })
+        // } else {
+        //   console.log(object)
+        //   return false
+        // }
+      //  })
       },
     }
   }
@@ -161,11 +173,13 @@
       width 90px
       margin-right 10px
     .form_container
+      margin 0 auto
       margin-top 5%
-      width 350px
+      width 400px
       z-index 100
       .logo_wrapper
-        padding: 0 35px 10px
+        padding 0 20px
+        margin-bottom 30px
         img
           width 100%
           height 100%
@@ -175,7 +189,7 @@
           width 60%
         .code_wrapper
           position absolute
-          height 32px
+          height 40px
           width 38%
           right 0
           top 0

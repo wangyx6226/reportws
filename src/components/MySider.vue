@@ -2,7 +2,7 @@
   <div class="my_sider">
     <!-- logo -->
     <div class="logo_wrapper">
-      <span class="logo">Ultimate Report</span>
+      <span class="logo">Ultimate ReportWS</span>
       <!-- <img src="../assets/logo-b-t.png" class="logo"> -->
     </div>
     <!-- menu -->
@@ -51,6 +51,7 @@
     methods: {
       addTab(child) {
         this.$taber.open(child.name)
+        // this.$router.push({name: 'login'})
       }
     }
   }
@@ -59,12 +60,12 @@
 <style lang="stylus">
 
   .my_sider
-    width 200px
+    width 240px
     height 100%
     background-color #FAFAFA
     .logo_wrapper
       background #0572D7
-      height 40px
+      height 50px
       width 100%
       box-sizing border-box
       display flex
@@ -79,13 +80,13 @@
       .el-submenu__title
         height 40px
         line-height 40px
-        font-size 10px
+        font-size 13px
         font-weight 700 !important
         &:hover
           background #fff
       .el-menu-item
-        height 30px !important
-        line-height 30px
-        font-size 10px
+        height 40px !important
+        line-height 40px
+        font-size 12px
 </style>
 

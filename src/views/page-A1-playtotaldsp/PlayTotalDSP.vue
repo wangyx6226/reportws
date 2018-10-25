@@ -1,18 +1,29 @@
 <template>
-  <div class="container" id="playDsp">
-    <base-title title="A_Song_PlayTotalDSP" name="222" age="43"></base-title>
-    <!-- <base-combo></base-combo> -->
-    <div id="lineChart" :style="chartStyle"></div>
-    <div class="grid_wrapper">
-      <a-table 
-        :columns="gridData.columns"
-        :dataSource="gridData.data"
-        bordered
-        size="small"
-        ref="grid"
-      />
+  <!-- <common-page> -->
+    <div class="container" id="playDsp">
+        <!--	
+          【分析】
+          页面的组成：
+            标题
+            search
+            表格
+            图表
+        -->
+        <base-title title="A_Song_PlayTotalDSP" name="222" age="43"></base-title>
+        <!-- <base-combo></base-combo> -->
+        <div id="lineChart" :style="chartStyle"></div>
+        <div class="grid_wrapper">
+          <a-table 
+            :columns="gridData.columns"
+            :dataSource="gridData.data"
+            bordered
+            size="small"
+            ref="grid"
+          />
+        </div>
     </div>
-  </div>
+  <!-- </common-page> -->
+  
 </template>
 
 <script>
@@ -180,14 +191,14 @@
     watch: {
       lang() {
         //判断有哪个实例就重新执行某个函数
-        this.drawLineChart(this.lineOption)
-        this.loadGrid()
+        // this.drawLineChart(this.lineOption)
+        // this.loadGrid()
       }
     }, 
 
     mounted() {
       // console.log(this.$attrs)s
-      this.drawLineChart(this.lineOption)
+      // this.drawLineChart(this.lineOption)
       this.loadGrid()
     },
 
@@ -198,6 +209,9 @@
       loadGrid() {
         
       }
+    },
+
+    components: {
     }
   }
 </script>
