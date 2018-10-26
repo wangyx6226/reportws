@@ -51,7 +51,6 @@
     methods: {
       addTab(child) {
         this.$taber.open(child.name)
-        // this.$router.push({name: 'login'})
       }
     }
   }

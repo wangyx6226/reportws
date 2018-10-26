@@ -1,6 +1,7 @@
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 
  const LangZh = {
+
   langLogin: {
     unPlaceholder: '用户名',
     pwPlaceholder: '密码',

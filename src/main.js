@@ -32,7 +32,7 @@ const taber = new VueTaber({
 
 Vue.component(Table.name, Table) //全局注册antd.table组件
 
-//全局注册基础组件
+//自动全局注册基础组件
 const requireComponent = require.context(
   './components', //组件目录相对路径
   false, //是否查询子目录

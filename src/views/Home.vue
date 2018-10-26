@@ -39,6 +39,8 @@
   import { $UGet } from '../api/request'
 
   export default {
+    props: ['usertype','age','name'],
+
     mixins: [userValidateMixin],
 
     components: {
@@ -46,7 +48,8 @@
     },
 
     mounted() {
-      console.log(this.$route.params)
+      console.log(this.$route.params) 
+      console.log(this.$route.matched) 
     },
 
     computed: {
@@ -111,9 +114,8 @@
         .el-dropdown-link 
           color #fff
     .el-main
+      padding 0
       position relative
-      // background pink
-      padding 0 20px 20px 20px
       .tabs-list-wrapper
         position fixed
         top 50px
@@ -121,7 +123,7 @@
           overflow hidden
       .tabs-content-wrapper
         position absolute
-        top 30px
+        top 35px
         width 100%
 </style>
 

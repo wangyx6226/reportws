@@ -1,3 +1,4 @@
+
 export default [
   {
     path: '/main/:A',
@@ -13,6 +14,7 @@ export default [
         id: 'A1',
         name: 'A_Song_PlayTotalDSP',
         hidden: false,
+        chartType: ['line', 'pie', 'bar'],  
         activeChannel: 'all'
       }, {
         path: '/main',

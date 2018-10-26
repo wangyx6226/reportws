@@ -161,7 +161,7 @@
 
   .login_page
     position relative
-    height 100%
+    height 1000px
     width 100%
     background linear-gradient(top, #0572D7, #23E2F4) no-repeat
     display flex
