@@ -1,181 +1,109 @@
 <template>
   <div class="container" id="playDsp">
-      <!--	
-        【分析】
-        页面的组成：
-          标题：公有，已全局注册
-          search： 公有，各不同
-          表格：都有，各不同
-          图表：私有，部分页面有
-      -->
-    <base-title title="A_Song_PlayTotalDSP" name="222" age="43"></base-title>
-    <!-- <base-combo></base-combo> -->
-    <div id="lineChart" :style="chartStyle"></div>
-    <!-- <div class="grid_wrapper">
-      <a-table 
-        :columns="gridData.columns"
-        :dataSource="gridData.data"
-        bordered
-        size="small"
-        ref="grid"
-      />
-    </div> -->
+
+    <base-title title="A_Song_PlayTotalDSP"></base-title>
+
+    <chart-view :charts="chartTypes"></chart-view>
+
   </div>
 </template>
 
 <script>
   import { drawChartsMixin } from '../../common/uitls-mixin'
+  import ChartView from '../../components/CommonChartView'
 
-  const columns = [
-    {
-      title: '日期(Date Range)',
-      dataIndex: 'date',
-      key: 'date',
-      width: 100,
-    }, {
-      title: '渠道商',
-      children: [
-        {
-          title: '在线播放',
-          dataIndex: 'online',
-          key: 'online',
-          width: 100
-        }, 
-        {
-          title: '下载播放',
-          dataIndex: 'down',
-          key: 'down',
-          width: 100
-        }, 
-        {
-          title: '缓存播放',
-          dataIndex: 'huancun',
-          key: 'huancun',
-          width: 100
-        }, 
-        {
-          title: '总数',
-          dataIndex: 'total',
-          key: 'total',
-          width: 100
-        }, 
-      ]
-    }, {
-      title: '总数',
-      children: [
-        {
-          title: '在线播放',
-          dataIndex: 'tonline',
-          key: 'tonline',
-          width: 100
-        }, 
-        {
-          title: '下载播放',
-          dataIndex: 'tdown',
-          key: 'tdown',
-          width: 100
-        }, 
-        {
-          title: '缓存播放',
-          dataIndex: 'tthuancun',
-          key: 'tthuancun',
-          width: 100
-        }, 
-        {
-          title: '总数',
-          dataIndex: 'ttotal',
-          key: 'ttotal',
-          width: 100
-        }, 
-      ]
-    }
-  ]
+  // const columns = [
+  //   {
+  //     title: '日期(Date Range)',
+  //     dataIndex: 'date',
+  //     key: 'date',
+  //     width: 100,
+  //   }, {
+  //     title: '渠道商',
+  //     children: [
+  //       {
+  //         title: '在线播放',
+  //         dataIndex: 'online',
+  //         key: 'online',
+  //         width: 100
+  //       }, 
+  //       {
+  //         title: '下载播放',
+  //         dataIndex: 'down',
+  //         key: 'down',
+  //         width: 100
+  //       }, 
+  //       {
+  //         title: '缓存播放',
+  //         dataIndex: 'huancun',
+  //         key: 'huancun',
+  //         width: 100
+  //       }, 
+  //       {
+  //         title: '总数',
+  //         dataIndex: 'total',
+  //         key: 'total',
+  //         width: 100
+  //       }, 
+  //     ]
+  //   }, {
+  //     title: '总数',
+  //     children: [
+  //       {
+  //         title: '在线播放',
+  //         dataIndex: 'tonline',
+  //         key: 'tonline',
+  //         width: 100
+  //       }, 
+  //       {
+  //         title: '下载播放',
+  //         dataIndex: 'tdown',
+  //         key: 'tdown',
+  //         width: 100
+  //       }, 
+  //       {
+  //         title: '缓存播放',
+  //         dataIndex: 'tthuancun',
+  //         key: 'tthuancun',
+  //         width: 100
+  //       }, 
+  //       {
+  //         title: '总数',
+  //         dataIndex: 'ttotal',
+  //         key: 'ttotal',
+  //         width: 100
+  //       }, 
+  //     ]
+  //   }
+  // ]
 
   const data = []
 
   export default {
     mixins: [drawChartsMixin],
+
     data() {
       return {
-        chartStyle: {
-          height: '400px',
-          width: '100%',
-          // background: 'pink'
-        },
+        chartTypes: ['line','bar','pie'],
+        //默认图表配置
         lineOption: {
-          title: ' A1_PlayTotalDSP_lineTitle',
+          title: 'A_Song_PlayTotalDSP_lineTitle',
           data: [],
-          legend: [], 
+          legend: [],
           yname: 'unitTimes'
         },
-        gridData: {
-          columns: [],
-          data: []
+        barOption: {
+          title: 'A_Song_PlayTotalDSP_barTitle',
+          data: [],
+          legend: [],
+          yname: 'unitTimes'
         },
-        defaultColumns: [
-            {
-              title: '日期<br/>Date Rangee',
-              dataIndex: 'date',
-              key: 'date',
-              width: 100,
-            }, {
-              title: '渠道商',
-              children: [
-                {
-                  title: '在线播放',
-                  dataIndex: 'online',
-                  key: 'online',
-                  width: 100
-                }, 
-                {
-                  title: '下载播放',
-                  dataIndex: 'down',
-                  key: 'down',
-                  width: 100
-                }, 
-                {
-                  title: '缓存播放',
-                  dataIndex: 'huancun',
-                  key: 'huancun',
-                  width: 100
-                }, 
-                {
-                  title: '总数',
-                  dataIndex: 'total',
-                  key: 'total',
-                  width: 100
-                }, 
-              ]
-            }, {
-              title: '总数',
-              children: [
-                {
-                  title: '在线播放',
-                  dataIndex: 'tonline',
-                  key: 'tonline',
-                  width: 100
-                }, 
-                {
-                  title: '下载播放',
-                  dataIndex: 'tdown',
-                  key: 'tdown',
-                  width: 100
-                }, 
-                {
-                  title: '缓存播放',
-                  dataIndex: 'tthuancun',
-                  key: 'tthuancun',
-                  width: 100
-                }, 
-                {
-                  title: '总数',
-                  dataIndex: 'ttotal',
-                  key: 'ttotal',
-                  width: 100
-                }, 
-              ]
-            }
-        ],
+        pieOption: {
+          title: 'A_Song_PlayTotalDSP_pieTitle',
+          data: [],
+          legend: [],
+          yname: 'unitTimes'
+        },
       }
     },
 
@@ -194,30 +122,26 @@
     }, 
 
     mounted() {
-      // console.log(this.$attrs)s
+      //初始化chart、grid
       this.drawLineChart(this.lineOption)
-      this.loadGrid()
+      this.drawPieChart(this.pieOption)
+      this.drawBarChart(this.barOption)
+
     },
 
     methods: {
-      drawChart() {
-        
-      },
-      loadGrid() {
-        
-      }
     },
 
     components: {
+      ChartView,
     }
   }
 </script>
 
 <style lang="stylus" scoped> 
   .container
+    background-color #f0f2f5
     width 100%
-    // background-color pink
-    // background-color #fafafa
-    .grid_wrapper
-      height 300px
+    padding 15px
+    overflow hidden
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="my_sider">
     <!-- logo -->
-    <div class="logo_wrapper">
+    <!-- <div class="logo_wrapper">
       <span class="logo">Ultimate ReportWS</span>
-      <!-- <img src="../assets/logo-b-t.png" class="logo"> -->
-    </div>
+      <img src="../assets/logo-b-t.png" class="logo">
+    </div> -->
     <!-- menu -->
       <!-- 
         unique-opened：保持展开一个菜单 
@@ -61,9 +61,11 @@
   .my_sider
     width 240px
     height 100%
-    background-color #FAFAFA
+    // background-color rgb(48, 65, 86)
+    background-color #2774fa
+    overflow hidden
     .logo_wrapper
-      background #0572D7
+      background #5DADE2 
       height 50px
       width 100%
       box-sizing border-box
@@ -75,7 +77,8 @@
         font-size 16px
     .el-menu
       background rgba(255,255,255,0)
-      color #555
+      color #fff
+      border-right-width: 0px;
       .el-submenu__title
         height 40px
         line-height 40px
@@ -87,5 +90,7 @@
         height 40px !important
         line-height 40px
         font-size 12px
+        &:hover
+          background #f0f2f5
 </style>
 

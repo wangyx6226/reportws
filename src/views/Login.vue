@@ -11,7 +11,8 @@
     <!-- form -->
     <div class="form_container">
       <div class="logo_wrapper">
-        <img src="../assets/logo-b-t.png">
+        WELCOME TO ULTIMATE REPOSTWS SYSTEM
+        <!-- <img src="../assets/logo-b-t.png"> -->
       </div>
       <el-form 
         :model='form' 
@@ -44,9 +45,9 @@
             auto-complete="off"
           >
           </el-input>
-          <div class="code_wrapper" @click="changeCodeImgMethod">
+          <!-- <div class="code_wrapper" @click="changeCodeImgMethod">
             <img :src="codeImgUrl" class="code">
-          </div>
+          </div> -->
         </el-form-item>
         <el-form-item>
           <el-button type="primary" :loading="logining" @click="submitMethod" class="submit_btn">{{$t('langLogin.loginBtnText')}}</el-button>
@@ -55,7 +56,7 @@
     </div>
 
     <!-- copyright -->
-    <p class="copyright">Copyright © 2016-2018 ULTIMATE All Rights Reserved</p>
+    <!-- <p class="copyright">Copyright © 2016-2018 ULTIMATE All Rights Reserved</p> -->
   </div>
 </template>
 
@@ -71,8 +72,8 @@
         codeImgUrl: $UConfUrl('/system/veri/drawcode.do'),
         logining: false,
         form: {
-          username: 'admin',
-          password: '12',
+          username: '',
+          password: '',
           validateCode: '',
         },
         rules: {
@@ -142,7 +143,7 @@
       //       // }
       //       let userinfo = res.response.docs 
             // this.$store.dispatch('setUserInfo', userinfo).then(() => {
-              this.$router.push({name: 'Home', params:{usertype: 'admin'}})
+              this.$router.push('/main')
               // this.logining = false
         //     })
         //   })
@@ -161,9 +162,11 @@
 
   .login_page
     position relative
-    height 1000px
+    height 100%
     width 100%
-    background linear-gradient(top, #0572D7, #23E2F4) no-repeat
+    // background linear-gradient(top, #0572D7, #23E2F4) no-repeat
+    background url(../assets/login.jpg) no-repeat 
+    background-size 100% 100%
     display flex
     justify-content center
     .lang_controler
@@ -173,16 +176,32 @@
       width 90px
       margin-right 10px
     .form_container
-      margin 0 auto
-      margin-top 5%
-      width 400px
+      position absolute
+      top 40px
+      left 210px
+      padding 30px
+      // margin 0 auto
+      // margin-top 5%
+      width 600px
+      // height 400px
       z-index 100
+      // background-color #fff
+      border-radius 5px
+      .el-input
+        input[type='text']
+          color #fff
+          background-color transparent
+          border-radius 700px
+          width 300px
       .logo_wrapper
         padding 0 20px
-        margin-bottom 30px
-        img
-          width 100%
-          height 100%
+        margin-left -30px
+        margin-bottom 35px
+        font-size 35px
+        color #fff
+        // img
+        //   width 100%
+        //   height 100%
       .vcode
         position relative
         .el-input__inner
@@ -195,7 +214,7 @@
           top 0
           background-color #fff
           box-sizing border-box
-          border 1px solid #dcdfe6
+          border 1px solid #01f0ff
           border-radius 4px
           overflow hidden
           cursor pointer
@@ -203,8 +222,10 @@
             width 100%
             height 100%
       .el-button
-        width 100%
-        background $color-background
+        width 300px
+        background linear-gradient(left, #02e1ef,#2365f3) no-repeat
+        border-radius 500px
+        border none
     .copyright
       position absolute
       bottom 30px

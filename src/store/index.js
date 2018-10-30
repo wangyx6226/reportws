@@ -15,7 +15,7 @@ export default new Vuex.Store({
   mutations,
   actions,
   modules: {
-    permission
+  permission
   },
   plugins: [createLogger()]
 })

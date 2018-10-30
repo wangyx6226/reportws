@@ -26,7 +26,7 @@
         </div>
       </el-header>
       <el-main>
-        <vue-tabs></vue-tabs>
+        <vue-tabs></vue-tabs>  
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -81,12 +81,14 @@
     width 100%
     height 100%
     .el-header 
-      background #5CACEE
+      // background #5CACEE
+      background #fff
       display flex
       align-items center
       justify-content flex-end
       overflow hidden
-      color #fff
+      // color #fff
+      color #606266
       font-size 15px
       .wrapper
         display flex
@@ -112,10 +114,10 @@
           margin-right 20px
           cursor pointer
         .el-dropdown-link 
-          color #fff
+          color #606266
     .el-main
-      padding 0
       position relative
+      padding 0
       .tabs-list-wrapper
         position fixed
         top 50px
@@ -125,5 +127,8 @@
         position absolute
         top 35px
         width 100%
+      & > div:not(:first-child)
+        position relative
+        top 35px
 </style>
 

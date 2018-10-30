@@ -1,15 +1,15 @@
 .vue-tabs {
   position: relative;
+  z-index: 10;
 }
 .tabs-list-wrapper {
   /* padding: 0px 8px; */
   margin-bottom: 5px;
-
   -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.12), 0 0 3px 0 rgba(0,0,0,.04);
   background: #fff;
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.12), 0 0 3px 0 rgba(0,0,0,.04);
-  height: 34px;
+  height: 35px;
   width: 100%;
 }
 @keyframes loading-rotate {
@@ -48,7 +48,7 @@
   line-height: 26px;
   margin-left: 5px;
   margin-top: 4px;
-  padding: 0 8px;
+  padding: 0 20px 0 8px;
   position: relative;
   
   float: left;
@@ -73,10 +73,10 @@
   -webkit-animation: loading-rotate 0.8s infinite linear;
 } */
 .tabs-list > li.active {
-  /* background-color: #42b983;
-  border-color: #42b983;
-  color: #fff; */
-  color: #333;
+  background-color: #85C1E9;
+  border-color: #85C1E9;
+  color: #fff;
+  /* color: #333; */
 }
 /* .tabs-list > li.active:after {
   content: ' ';
@@ -100,19 +100,19 @@
   position: absolute;
   display: inline-block;
   opacity: 0;
-  top: 2px;
+  top: 7px;
   right: 0px;
   line-height: 12px;
   width: 14px;
   height: 14px;
   border-radius: 14px;
   font-size: 12px;
-  color: #999;
+  color: 000;
   transition: all 0.2s ease;
 }
 .tabs-list > li .btn-close:hover {
   color: #333;
-  transform: scale(1.5);
+  transform: scale(1);
   cursor: pointer;
 }
 .tabs-content-wrapper {

@@ -6,7 +6,8 @@ Vue.use(Router)
 // 引入组件
 import Login from '../views/Login'
 import Home from '../views/Home'
-// import { join } from 'path';
+import Welcome from '../views/pages/welcome.vue'
+
 
 const routes = [
   {
@@ -20,7 +21,12 @@ const routes = [
     path: '/main',
     alias: '/home',
     component: Home,
-    name: 'home'
+    children: [
+      {
+        path: '/',
+        component: Welcome,
+      }
+    ]
     // props: true, //设置为true，route.params将被设置为组件属性
     // props: {
     //   name: 3333,

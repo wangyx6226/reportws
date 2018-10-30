@@ -1,6 +1,5 @@
 
 const getters = {
-
   userName: state => state.userInfo.username || '',
   langrage: state => state.langrage,
   userInfo: state => state.userInfo,
@@ -10,7 +9,6 @@ const getters = {
   emails:  state => state.emails,
   accessRouters: state => state.permission.accessRouters,
   accessTabs: state => state.permission.accessTabs,
-
 }
 
 export default getters
