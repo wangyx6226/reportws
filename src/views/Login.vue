@@ -56,14 +56,15 @@
     </div>
 
     <!-- copyright -->
-    <!-- <p class="copyright">Copyright © 2016-2018 ULTIMATE All Rights Reserved</p> -->
+    <p class="copyright">Copyright © 2016-2018 ULTIMATE All Rights Reserved</p>
   </div>
 </template>
 
 <script>
-  import { $UConfUrl } from '../api/config'
-  import { $UPost } from '../api/request'
-  import REQUEST_LOGIN from '../api/map'
+  import { $UConfUrl } from '@/api/config'
+  import { $UPost } from '@/api/request'
+  import REQUEST_LOGIN from '@/api/map'
+
 
   export default {
 
@@ -195,7 +196,7 @@
           width 300px
       .logo_wrapper
         padding 0 20px
-        margin-left -30px
+        margin-left -20px
         margin-bottom 35px
         font-size 35px
         color #fff

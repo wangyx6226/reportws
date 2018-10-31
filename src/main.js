@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import store from './store/index'
+import store from './store'
 import router from './router'
 import ElementUI from 'element-ui'
-import i18n from './common/lang' //国际化插件
+import i18n from './lang' //国际化插件
 import VueTaber from 'vue-tabs' 
 import tabs from './router/tabs-map'
 import upperFirst from 'lodash/upperFirst'

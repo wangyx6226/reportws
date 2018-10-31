@@ -33,15 +33,14 @@
   export default {
     props: {
       charts: {
-        type: Array,
-        default() {
-          return []
+        type: [String, Array],
+        default: 'line',
+        validator: function (value) {
+          //该函数在实例创建之前执行，无法访问实例属性(data..)
+          return typeof value === 'string' || value.length > 0
         }
       },
-      menu: {
-        type: String,
-        default: 'A_Song_PlayTotalDSP'
-      }
+      menu: String
     },
 
     data() {

@@ -37,6 +37,8 @@
   import { mapGetters } from 'vuex'
 
   export default {
+    name: 'MySider',
+
     data() {
       return {
 

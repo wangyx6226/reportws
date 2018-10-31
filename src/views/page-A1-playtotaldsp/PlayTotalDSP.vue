@@ -1,9 +1,9 @@
 <template>
   <div class="container" id="playDsp">
 
-    <base-title title="A_Song_PlayTotalDSP"></base-title>
-
-    <chart-view :charts="chartTypes"></chart-view>
+    <base-title :title="name" name="aaa" data-base="sdfsfkj" age="32" class="baseaaa"></base-title>
+    
+    <chart-view :charts="chartTypes" :menu="name"></chart-view>
 
   </div>
 </template>
@@ -12,78 +12,11 @@
   import { drawChartsMixin } from '../../common/uitls-mixin'
   import ChartView from '../../components/CommonChartView'
 
-  // const columns = [
-  //   {
-  //     title: '日期(Date Range)',
-  //     dataIndex: 'date',
-  //     key: 'date',
-  //     width: 100,
-  //   }, {
-  //     title: '渠道商',
-  //     children: [
-  //       {
-  //         title: '在线播放',
-  //         dataIndex: 'online',
-  //         key: 'online',
-  //         width: 100
-  //       }, 
-  //       {
-  //         title: '下载播放',
-  //         dataIndex: 'down',
-  //         key: 'down',
-  //         width: 100
-  //       }, 
-  //       {
-  //         title: '缓存播放',
-  //         dataIndex: 'huancun',
-  //         key: 'huancun',
-  //         width: 100
-  //       }, 
-  //       {
-  //         title: '总数',
-  //         dataIndex: 'total',
-  //         key: 'total',
-  //         width: 100
-  //       }, 
-  //     ]
-  //   }, {
-  //     title: '总数',
-  //     children: [
-  //       {
-  //         title: '在线播放',
-  //         dataIndex: 'tonline',
-  //         key: 'tonline',
-  //         width: 100
-  //       }, 
-  //       {
-  //         title: '下载播放',
-  //         dataIndex: 'tdown',
-  //         key: 'tdown',
-  //         width: 100
-  //       }, 
-  //       {
-  //         title: '缓存播放',
-  //         dataIndex: 'tthuancun',
-  //         key: 'tthuancun',
-  //         width: 100
-  //       }, 
-  //       {
-  //         title: '总数',
-  //         dataIndex: 'ttotal',
-  //         key: 'ttotal',
-  //         width: 100
-  //       }, 
-  //     ]
-  //   }
-  // ]
-
-  const data = []
-
   export default {
     mixins: [drawChartsMixin],
-
     data() {
       return {
+        name: 'A_Song_PlayTotalDSP',
         chartTypes: ['line','bar','pie'],
         //默认图表配置
         lineOption: {

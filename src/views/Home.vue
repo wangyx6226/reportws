@@ -34,9 +34,9 @@
 </template>
 
 <script>
-  import MySider from '../components/MySider'
-  import { userValidateMixin } from '../common/uitls-mixin'
-  import { $UGet } from '../api/request'
+  import MySider from '@/components/MySider'
+  import { userValidateMixin } from '@/common/uitls-mixin'
+  import { $UGet } from '@/api/request'
 
   export default {
     props: ['usertype','age','name'],

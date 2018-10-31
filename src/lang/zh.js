@@ -44,7 +44,8 @@ import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
     unitConut: '单位：个',
     unitTimes: '单位：次',
     unitMinute: '单位：分钟',
-    dataRangeText: '日日日期'
+    dataRangeText: '日日日期',
+    direction: '功能说明',
   },
   langChartTitle: {
     A_Song_PlayTotalDSP_lineTitle: '播放凑数',
