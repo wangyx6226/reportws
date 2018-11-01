@@ -14,15 +14,7 @@
             <span>|</span>
           </div>
           <div class="logout" @click="logOutMethod">Logout</div>
-          <el-dropdown @command="changeLangMethod">
-            <span class="el-dropdown-link">
-              Langrage<i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="EN">English</el-dropdown-item>
-              <el-dropdown-item command="CN">中文</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+          <lang-select></lang-select>
         </div>
       </el-header>
       <el-main>
@@ -35,16 +27,20 @@
 
 <script>
   import MySider from '@/components/MySider'
+  import LangSelect from '@/components/ComLangSelect'
   import { userValidateMixin } from '@/common/uitls-mixin'
   import { $UGet } from '@/api/request'
 
   export default {
+    name: 'Home',
+
     props: ['usertype','age','name'],
 
     mixins: [userValidateMixin],
 
     components: {
-      MySider
+      MySider,
+      LangSelect
     },
 
     mounted() {
@@ -66,7 +62,7 @@
 
       logOutMethod() {
         $UGet('logout').then(res => {
-          this.$store.dispatch('logOut') 
+          // this.$store.dispatch('logOut') 
           this.$router.push('/')
         }) 
       }
@@ -127,8 +123,12 @@
         position absolute
         top 35px
         width 100%
-      & > div:not(:first-child)
+      .container
         position relative
         top 35px
+        background-color #f0f2f5
+        width 100%
+        padding 15px
+        overflow hidden
 </style>
 

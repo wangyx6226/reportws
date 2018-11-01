@@ -1,17 +1,18 @@
-import PlayTotalDSP from '../views/page-A1-playtotaldsp/PlayTotalDSP'
+// import PlayTotalDSP from '../views/page-A1-playtotaldsp/PlayTotalDSP'
+
 //引入所有组件
 
-export default [
+export default [  
   {
     path:'/main/A/A1',
     name: 'A_Song_PlayTotalDSP',
     title:'A_Song_PlayTotalDSP',
-    component: PlayTotalDSP
+    component: () => import('@/views/playdata/A1')
   },
   {
     path:'/main/A/A2',
     name: 'A_Song_PlayDetailDSP',
     title:'A_Song_PlayDetailDSP',
-    component: null
+    component: () => import('@/views/playdata/A2')
   },
 ]

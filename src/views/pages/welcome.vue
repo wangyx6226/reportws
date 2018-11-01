@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    欢迎你dsfsdf
+  <div class="welcome">
+    欢迎你
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 </script>
 
 <style lang="stylus" scoped>
-  .container
+  .welcome
     background-color 
     height calc(100vh - 35px - 50px)
     width 100%

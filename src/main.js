@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import store from './store'
-import router from './router'
+import store from '@/store'
+import router from '@/router'
 import ElementUI from 'element-ui'
-import i18n from './lang' //国际化插件
+import i18n from '@/lang' //国际化插件
 import VueTaber from 'vue-tabs' 
 import tabs from './router/tabs-map'
 import upperFirst from 'lodash/upperFirst'
@@ -13,8 +13,8 @@ import App from './App.vue'
 
 //CSS
 import 'element-ui/lib/theme-chalk/index.css'
-import './assets/stylus/index.styl'
-import '../vue-tabs.css'
+import '@/assets/stylus/index.styl'
+import '@/styles/vue-tabs.css'
 import 'vue-good-table/dist/vue-good-table.css'
 import 'vue-antd-ui/dist/antd.css'
 
@@ -32,7 +32,8 @@ const taber = new VueTaber({
 
 Vue.component(Table.name, Table) //全局注册antd.table组件
 
-//自动全局注册基础组件
+
+/* 自动全局注册基础组件 */
 const requireComponent = require.context(
   './components', //组件目录相对路径
   false, //是否查询子目录
@@ -50,6 +51,7 @@ requireComponent.keys().forEach(fileName => {
   //全局注册组件
   Vue.component(componentName, componentConfig.default || componentConfig)
 })
+
 
 /* eslint-disable no-new */
 new Vue({

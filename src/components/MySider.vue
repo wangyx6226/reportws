@@ -1,30 +1,21 @@
 <template>
   <div class="my_sider">
-    <!-- logo -->
-    <!-- <div class="logo_wrapper">
-      <span class="logo">Ultimate ReportWS</span>
-      <img src="../assets/logo-b-t.png" class="logo">
-    </div> -->
-    <!-- menu -->
-      <!-- 
-        unique-opened：保持展开一个菜单 
-      -->
     <el-menu
       v-if="accessRouters"
       default-active="1-4-1"
       unique-opened>
-      <template v-for="(item,index) in accessRouters" v-if="!item.hidden || item.childrens.length">
+      <template v-for="(item,index) in accessRouters" v-if="!item.hidden || item.children.length">
         <el-submenu :key="item.id" :index="`${index}`">
           <template slot="title" >
             <i :class="item.iconCls"></i>
             <span slot="title" style="font-weight: 700">{{$t('langMenuMap.'+ item.name)}}</span>
           </template>
           <el-menu-item 
-            v-for="(child,index) in item.childrens" 
+            v-for="(child,index) in item.children" 
             v-if="!child.hidden" 
             :key="child.id"  
             :index='`${index}`'
-            @click="addTab(child)">
+            @click="addTab(item,child)">
             {{$t('langMenuMap.'+ child.name)}}
           </el-menu-item>
         </el-submenu>
@@ -51,8 +42,9 @@
     },
 
     methods: {
-      addTab(child) {
-        this.$taber.open(child.name)
+      addTab(item,child) {
+        this.$router.push(item.path + '/' + child.path)
+        // this.$taber.open(child.name)
       }
     }
   }

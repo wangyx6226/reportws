@@ -3,10 +3,9 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-// 引入组件
-import Login from '../views/Login'
-import Home from '../views/Home'
-import Welcome from '../views/pages/welcome.vue'
+import Home from '@/views/Home'
+
+import { playdata } from './menu-map'
 
 
 const routes = [
@@ -14,32 +13,56 @@ const routes = [
     path: '/',
     // redirect: '/main', //重定向
     alias:'/login', //别名：当用访问/login时，url保持/login,路由匹配/
-    component: Login,
+    component: () => import('@/views/Login'),
     name: 'login', //命名路由，可以通过name属性进行路由跳转，可有可无
-  }, 
-  {
-    path: '/main',
-    alias: '/home',
-    component: Home,
-    children: [
-      {
-        path: '/',
-        component: Welcome,
-      }
-    ]
-    // props: true, //设置为true，route.params将被设置为组件属性
+     // props: true, //设置为true，route.params将被设置为组件属性
     // props: {
     //   name: 3333,
     //   age: 555
     // }
-  },
+  }, 
   // {
   //   path: '/404',
   //   component: to404,
   //   name: '404',
   //   hidden: true
-  // }
+  // },
+  {
+    path: '',
+    component: Home,
+    redirect: 'welcome', //重定向
+    children: [
+      {
+        path: '/welcome',  
+        component: () => import('@/views/pages/welcome'),
+        name: 'Welcome'
+      }
+    ]
+  },
+  playdata,
+  // {
+  //   path: '/operation'
+  // },
+  // {
+  //   path: '/top'
+  // },
+  // {
+  //   path: '/finance'
+  // },
+  // {
+  //   path: '/log'
+  // },
+  // {
+  //   path: '/log'
+  // },
+  // {
+  //   path: '/form'
+  // },
+  // {
+  //   path: '/system'
+  // },
 ]
+
 
 let router = new Router({
   // mode: 'history',

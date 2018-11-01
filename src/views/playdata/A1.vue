@@ -1,7 +1,7 @@
 <template>
-  <div class="container" id="playDsp">
+  <div class="container">
 
-    <base-title :title="name" name="aaa" data-base="sdfsfkj" age="32" class="baseaaa"></base-title>
+    <base-title :title="name"></base-title>
     
     <chart-view :charts="chartTypes" :menu="name"></chart-view>
 
@@ -9,8 +9,8 @@
 </template>
 
 <script>
-  import { drawChartsMixin } from '../../common/uitls-mixin'
-  import ChartView from '../../components/CommonChartView'
+  import { drawChartsMixin } from '@/common/uitls-mixin'
+  import ChartView from '@/components/CommonChartView'
 
   export default {
     mixins: [drawChartsMixin],
@@ -55,6 +55,7 @@
     }, 
 
     mounted() {
+      console.log('重新创建')
       //初始化chart、grid
       this.drawLineChart(this.lineOption)
       this.drawPieChart(this.pieOption)
@@ -72,9 +73,9 @@
 </script>
 
 <style lang="stylus" scoped> 
-  .container
-    background-color #f0f2f5
-    width 100%
-    padding 15px
-    overflow hidden
+  // .container
+  //   background-color #f0f2f5
+  //   width 100%
+  //   padding 15px
+  //   overflow hidden
 </style>

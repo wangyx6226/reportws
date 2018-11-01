@@ -49,7 +49,8 @@ const langEn = {
 		unitCount: 'Unit:Count',
     unitMinute: 'Unit:Minute',
     dataRangeText: 'Date Range',
-    direction: 'Direction'
+    direction: 'Direction',
+    lang: 'Langrage',
   },
   langChartTitle: {
     A1_PlayTotalDSP_lineTitle: 'Play Trend'

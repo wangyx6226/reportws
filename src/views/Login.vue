@@ -1,11 +1,8 @@
 <template>
   <div class="login_page">
-    <!-- lang controler -->
+    <!-- lang select -->
     <div class="lang_controler">
-      <el-select v-model="langrage" size="small">
-        <el-option label="English" value="EN"></el-option>
-        <el-option label="中文" value="CN"></el-option>
-      </el-select>
+      <lang-select class="white"></lang-select>
     </div>
     
     <!-- form -->
@@ -26,31 +23,32 @@
             v-model="form.username" 
             :placeholder="$t('langLogin.unPlaceholder')"
             :autofocus="true"
-            auto-complete="off" 
-          >
-          </el-input>
+            auto-complete="off"
+            name="username"
+          />
         </el-form-item>
         <el-form-item prop="password">
           <el-input 
             v-model="form.password" 
             :placeholder="$t('langLogin.pwPlaceholder')"
-            auto-complete="off" 
-          >
-          </el-input>
+            auto-complete="off"
+            name="password"
+          />
         </el-form-item >
         <el-form-item prop="validateCode" class="vcode">
           <el-input 
             v-model="form.validateCode" 
             :placeholder="$t('langLogin.vcPlaceholder')"
             auto-complete="off"
-          >
-          </el-input>
-          <!-- <div class="code_wrapper" @click="changeCodeImgMethod">
+            name="validateCode"
+            @keyup.enter.native="submitMethod"
+          />
+          <div class="code_wrapper" @click="changeCodeImgMethod">
             <img :src="codeImgUrl" class="code">
-          </div> -->
+          </div>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" :loading="logining" @click="submitMethod" class="submit_btn">{{$t('langLogin.loginBtnText')}}</el-button>
+          <el-button type="primary" :loading="logining" @click="submitMethod" class="submit_btn">{{ $t('langLogin.loginBtnText') }}</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -61,20 +59,26 @@
 </template>
 
 <script>
+  import LangSelect from '@/components/ComLangSelect'
   import { $UConfUrl } from '@/api/config'
   import { $UPost } from '@/api/request'
   import REQUEST_LOGIN from '@/api/map'
 
 
   export default {
+    name: 'Login',
+
+    components: {
+      LangSelect
+    },
 
     data() {
       return {
         codeImgUrl: $UConfUrl('/system/veri/drawcode.do'),
         logining: false,
         form: {
-          username: '',
-          password: '',
+          username: 'admin',
+          password: '12',
           validateCode: '',
         },
         rules: {
@@ -165,11 +169,11 @@
     position relative
     height 100%
     width 100%
-    // background linear-gradient(top, #0572D7, #23E2F4) no-repeat
-    background url(../assets/login.jpg) no-repeat 
-    background-size 100% 100%
-    display flex
-    justify-content center
+    background linear-gradient(top, #0572D7, #23E2F4) no-repeat
+    // background url(../assets/login.jpg) no-repeat 
+    // background-size 100% 100%
+    // display flex
+    // justify-content center
     .lang_controler
       position absolute
       top 20px
