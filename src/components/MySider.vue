@@ -44,6 +44,7 @@
     methods: {
       addTab(item,child) {
         this.$router.push(item.path + '/' + child.path)
+        // this.$taber.close(child.name)
         // this.$taber.open(child.name)
       }
     }

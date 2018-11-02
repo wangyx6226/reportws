@@ -47,9 +47,9 @@
             <img :src="codeImgUrl" class="code">
           </div>
         </el-form-item>
-        <el-form-item>
+        <!-- <el-form-item>
           <el-button type="primary" :loading="logining" @click="submitMethod" class="submit_btn">{{ $t('langLogin.loginBtnText') }}</el-button>
-        </el-form-item>
+        </el-form-item> -->
       </el-form>
     </div>
 

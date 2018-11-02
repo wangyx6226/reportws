@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome">
+  <div class="container">
     欢迎你
   </div>
 </template>
@@ -11,8 +11,8 @@
 </script>
 
 <style lang="stylus" scoped>
-  .welcome
-    background-color 
-    height calc(100vh - 35px - 50px)
+  .container
+    background-color pink
+    height 100%
     width 100%
 </style>

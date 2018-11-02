@@ -2,8 +2,9 @@
   <div class="container">
 
     <base-title :title="name"></base-title>
-    
+    <button @click="loaddata">加载数据</button>
     <chart-view :charts="chartTypes" :menu="name"></chart-view>
+
 
   </div>
 </template>
@@ -17,7 +18,7 @@
     data() {
       return {
         name: 'A_Song_PlayTotalDSP',
-        chartTypes: ['line','bar','pie'],
+        chartTypes: ['line'],
         //默认图表配置
         lineOption: {
           title: 'A_Song_PlayTotalDSP_lineTitle',
@@ -58,12 +59,17 @@
       console.log('重新创建')
       //初始化chart、grid
       this.drawLineChart(this.lineOption)
-      this.drawPieChart(this.pieOption)
-      this.drawBarChart(this.barOption)
+      // this.drawPieChart(this.pieOption)
+      // this.drawBarChart(this.barOption)
 
     },
 
     methods: {
+      loaddata() {
+        this.lineOption.data = [820, 932, 901, 934, 1290, 1330, 1320]
+        this.lineOption.xdata = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+         this.drawLineChart(this.lineOption)
+      }
     },
 
     components: {

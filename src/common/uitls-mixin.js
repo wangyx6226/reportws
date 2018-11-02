@@ -51,7 +51,7 @@ export const drawChartsMixin = {
      */
     drawLineChart( params = {}) {
       let {
-        data, 
+        data,
         title,
         legend,
         xdata,

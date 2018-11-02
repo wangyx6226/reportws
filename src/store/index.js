@@ -6,6 +6,7 @@ import getters from './getters'
 import actions from './actions'
 import permission from './permission'
 import createLogger from 'vuex/dist/logger'
+import tagView from './modules/tagView'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,8 @@ export default new Vuex.Store({
   mutations,
   actions,
   modules: {
-  permission
+    permission,
+    tagView
   },
   plugins: [createLogger()]
 })

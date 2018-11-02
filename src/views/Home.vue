@@ -18,8 +18,14 @@
         </div>
       </el-header>
       <el-main>
-        <vue-tabs></vue-tabs>  
-        <router-view></router-view>
+        <!-- <vue-tabs></vue-tabs> -->
+        <tag-view></tag-view>
+        <!-- 缓存组件 -->
+        <transition name="fade-transform" mode="out-in">
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
+        </transition>
       </el-main>
     </el-container>
   </el-container>
@@ -27,6 +33,7 @@
 
 <script>
   import MySider from '@/components/MySider'
+  import TagView from '@/components/TagView'
   import LangSelect from '@/components/ComLangSelect'
   import { userValidateMixin } from '@/common/uitls-mixin'
   import { $UGet } from '@/api/request'
@@ -40,12 +47,13 @@
 
     components: {
       MySider,
-      LangSelect
+      LangSelect,
+      TagView
     },
 
     mounted() {
-      console.log(this.$route.params) 
-      console.log(this.$route.matched) 
+      console.log(this.$route) 
+      // console.log(this.$route.matched) 
     },
 
     computed: {
@@ -61,9 +69,10 @@
       },
 
       logOutMethod() {
-        $UGet('logout').then(res => {
-          // this.$store.dispatch('logOut') 
-          this.$router.push('/')
+        $UGet('logout').then( res => {
+          // this.$store.dispatch('logOut').then(() => {
+            this.$router.push('/login')
+          // })
         }) 
       }
     }
@@ -124,8 +133,8 @@
         top 35px
         width 100%
       .container
-        position relative
-        top 35px
+        // position relative
+        // top 35px
         background-color #f0f2f5
         width 100%
         padding 15px
