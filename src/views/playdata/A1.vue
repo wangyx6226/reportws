@@ -2,6 +2,16 @@
   <div class="container">
 
     <base-title :title="name"></base-title>
+
+    <base-form-wrap>
+      <el-form ref="form" :model="form" :inline="true" size="mini">
+        <el-form-item label="供应商">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+      </el-form>
+    </base-form-wrap>
+
+   
     <button @click="loaddata">加载数据</button>
     <chart-view :charts="chartTypes" :menu="name"></chart-view>
 
@@ -14,7 +24,10 @@
   import ChartView from '@/components/CommonChartView'
 
   export default {
+    name: '渠道商播放总表',
+
     mixins: [drawChartsMixin],
+    
     data() {
       return {
         name: 'A_Song_PlayTotalDSP',
@@ -38,6 +51,9 @@
           legend: [],
           yname: 'unitTimes'
         },
+        form: {
+
+        }
       }
     },
 

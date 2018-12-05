@@ -4,7 +4,7 @@
       <my-sider></my-sider>
     </el-aside>
     <el-container>
-      <el-header height="50px">
+      <el-header height="45px">
         <div class="wrapper">
           <div class="user_info" v-if="userName">
             <span class="user_img">
@@ -19,7 +19,7 @@
       </el-header>
       <el-main>
         <!-- <vue-tabs></vue-tabs> -->
-        <tag-view></tag-view>
+        <!-- <tag-view></tag-view> -->
         <!-- 缓存组件 -->
         <transition name="fade-transform" mode="out-in">
           <keep-alive>
@@ -81,7 +81,6 @@
 </script>
 
 <style lang="stylus">
-
   .home_page
     width 100%
     height 100%
@@ -94,7 +93,7 @@
       overflow hidden
       // color #fff
       color #606266
-      font-size 15px
+      font-size 13px
       .wrapper
         display flex
         align-items center
@@ -123,21 +122,19 @@
     .el-main
       position relative
       padding 0
-      .tabs-list-wrapper
-        position fixed
-        top 50px
-        .tabs-list
-          overflow hidden
-      .tabs-content-wrapper
-        position absolute
-        top 35px
-        width 100%
+      // .tabs-list-wrapper
+      //   position fixed
+      //   top 50px
+      //   .tabs-list
+      //     overflow hidden
+      // .tabs-content-wrapper
+      //   position absolute
+      //   top 35px
+      //   width 100%
       .container
-        // position relative
-        // top 35px
         background-color #f0f2f5
         width 100%
-        padding 15px
+        padding 10px
         overflow hidden
 </style>
 

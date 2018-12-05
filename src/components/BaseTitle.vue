@@ -1,9 +1,9 @@
 <template>
   <div class="base_title">
-      <h1>{{$t('langMenuMap.'+ title)}}</h1>
-      <el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="right">
-        <el-button>{{$t('langCommon.direction')}}</el-button>
-      </el-tooltip>
+    <h1>{{$t('langMenuMap.'+ title)}}</h1>
+    <el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="right">
+      <el-button size="mini">{{$t('langCommon.direction')}}</el-button>
+    </el-tooltip>
   </div>
 </template>
 
@@ -32,13 +32,13 @@
   .base_title
     display flex
     align-items center
-    padding 15px
+    padding 10px
     background-color #fff
-    margin-bottom 15px
-    border-radius 5px
+    margin-bottom 8px
+    // border-radius 5px
     h1
       color #777777
-      font-size 16px
+      font-size 14px
       height 100%
       font-weight 700
       margin 0
