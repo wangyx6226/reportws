@@ -103,7 +103,8 @@
 
     watch: {
       spid(val) {
-        console.log('spid change' + ':' + val)
+        console.log('spid change')
+        console.log(val)
       }
       // form(val) {
       //   console.log(555555)

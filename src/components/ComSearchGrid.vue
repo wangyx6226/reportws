@@ -2,7 +2,7 @@
   <div class="search_grid">
      <!-- search input -->
     <div class="input_wrap">
-      <div><i class="el-icon-search"></i></div>
+      <div class="icon_wrap" :style="{width:indexWidth+'px'}"><i class="el-icon-search"></i></div>
       <el-input 
         v-model="leftVal"
         :placeholder="leftPlaceholder"
@@ -22,13 +22,14 @@
         :height="height"
         :max-height="maxHeight"
         @row-click="handleRowClick"
+        @header-dragend="handleHeaderDragend"
         border
         style="width: 100%"
         size="mini">
         <el-table-column
           type="index"
           align="center"
-          width="40">
+          :width="indexWidth">
         </el-table-column>
         <el-table-column
           v-for="col in columns"
@@ -58,6 +59,7 @@ export default {
       rightVal: '',
       value: '',
       text: '',
+      indexWidth: '40',
     }
   },
 
@@ -79,7 +81,6 @@ export default {
   methods: {
     handleRowClick(row, event, colu) {
       if (row) {
-        // console.log(row);
         this.$emit('pick', {
           value: row.value,
           text: row.text
@@ -87,6 +88,12 @@ export default {
       }
     },
    
+    handleHeaderDragend(newWidth, oldWidth, column, event) {
+      console.log(column)
+      if (column.type === 'index') {
+        this.indexWidth = newWidth;
+      }
+    }
   }
 }
   
@@ -99,6 +106,10 @@ export default {
   .input_wrap
     padding 5px 14px 5px 0
     display flex
+    .icon_wrap
+      // background-color pink
+      text-align center
+      font-size 14px
     .leftInput
       margin-right 5px
 </style>

@@ -1,18 +1,20 @@
 <template>
-  <transition name="el-zoom-in-top" @after-leave="$emit('dodestroy')">
+  <transition name="el-zoom-in-top">
     <div class="picker_wrap" v-show="visible">
       <search-grid
         :tableData="tableData"
         :columns="columns"
         @pick="handleConfirm"
-        height="220" 
-        max-height="220">
+        height="210" 
+        max-height="210">
       </search-grid>
     </div>
   </transition>
 </template>
 
 <script>
+//显示
+//向上传递
 import SearchGrid from '@/components/ComSearchGrid';
 
 export default {
@@ -89,6 +91,8 @@ export default {
   top 40px
   width 320px
   background-color #fff
-  border 1px solid #ccc
+  border 1px solid #e4e7ed
+  border-radius 4px
+  box-shadow 0 2px 12px 0 rgba(0,0,0,.1)
   z-index 1
 </style>
