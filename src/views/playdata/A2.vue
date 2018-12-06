@@ -10,7 +10,7 @@
 
 <script>
   import { drawChartsMixin } from '@/common/uitls-mixin'
-  import ChartView from '@/components/CommonChartView'
+  import ChartView from '@/components/ComChartView'
 
   export default {
     mixins: [drawChartsMixin],

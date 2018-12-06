@@ -3,10 +3,17 @@
 
     <base-title :title="name"></base-title>
 
-    <base-form-wrap>
+    <base-form-wrap :todos="todos">
       <el-form ref="form" :model="form" :inline="true" size="mini">
         <el-form-item label="供应商">
-          <el-input v-model="form.name"></el-input>
+          <combo-grid type="sp" v-model="spid"></combo-grid>
+        </el-form-item>
+        <el-form-item label="">
+           <el-date-picker
+            v-model="value1"
+            type="date"
+            placeholder="选择日期">
+          </el-date-picker>
         </el-form-item>
       </el-form>
     </base-form-wrap>
@@ -15,21 +22,51 @@
     <button @click="loaddata">加载数据</button>
     <chart-view :charts="chartTypes" :menu="name"></chart-view>
 
+    <div style="height: 500px"></div>
 
   </div>
 </template>
 
 <script>
   import { drawChartsMixin } from '@/common/uitls-mixin'
-  import ChartView from '@/components/CommonChartView'
+  import ChartView from '@/components/ComChartView'
+  import ComboGrid from '@/components/ComComboGrid/index'
 
   export default {
-    name: '渠道商播放总表',
+    // name: '渠道商播放总表',
 
     mixins: [drawChartsMixin],
-    
+
+    components: {
+      ChartView,
+      ComboGrid,
+    },
+
     data() {
       return {
+        value1:'',
+        todos: [
+          {
+            id: 1,
+            complete: true,
+            text: '吃饭'
+          },
+          {
+            id: 2,
+            complete: true,
+            text: '睡觉'
+          },
+          {
+            id: 3,
+            complete: false,
+            text: '打豆豆'
+          },
+          {
+            id: 4,
+            complete: true,
+            text: '海'
+          },
+        ],
         name: 'A_Song_PlayTotalDSP',
         chartTypes: ['line'],
         //默认图表配置
@@ -51,8 +88,9 @@
           legend: [],
           yname: 'unitTimes'
         },
+        spid: '',
         form: {
-
+          // spid: ''
         }
       }
     },
@@ -64,11 +102,12 @@
     },
 
     watch: {
-      lang() {
-        //判断有哪个实例就重新执行某个函数
-        // this.drawLineChart(this.lineOption)
-        // this.loadGrid()
+      spid(val) {
+        console.log('spid change' + ':' + val)
       }
+      // form(val) {
+      //   console.log(555555)
+      // }
     }, 
 
     mounted() {
@@ -88,16 +127,9 @@
       }
     },
 
-    components: {
-      ChartView,
-    }
+    
   }
 </script>
 
 <style lang="stylus" scoped> 
-  // .container
-  //   background-color #f0f2f5
-  //   width 100%
-  //   padding 15px
-  //   overflow hidden
 </style>

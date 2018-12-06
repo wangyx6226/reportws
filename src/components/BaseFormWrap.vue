@@ -1,4 +1,12 @@
 <template>
+  <!-- <ul> -->
+    <!-- <li v-for="todo in todos" :key="todo.id"> -->
+      <!-- 将内部所用数据传递给上下文 -->
+      <!-- <slot :todo="todo">
+        {{ todo.text }}
+      </slot>
+    </li>
+  </ul> -->
   <div class="form_wrap">
     <slot></slot>
   </div>
@@ -6,7 +14,9 @@
 
 <script>
 export default {
-  
+  // props: {
+  //   todos: Array
+  // }
 }
 </script>
 
