@@ -5,8 +5,9 @@
         :tableData="tableData"
         :columns="columns"
         @pick="handleConfirm"
-        height="210" 
-        max-height="210">
+        height="210"
+        max-height="210"
+        ref="searchGird">
       </search-grid>
     </div>
   </transition>
@@ -18,6 +19,7 @@
 import SearchGrid from '@/components/ComSearchGrid';
 
 export default {
+
   components: {
     SearchGrid,
   },
@@ -66,18 +68,28 @@ export default {
       columns: [
         {
           prop: 'value',
-          label: 'SP ID'
+          label: 'SP ID',
+          width: '110'
         }, {
           prop: 'text',
-          label: 'SP Name'
+          label: '供应商名称',
         }
-      ]
+      ],
+
     }
   },
 
+  mounted() {
+   
+  },
+
   methods: {
+    clearSearchInput() {
+      this.$refs.searchGird.clear();
+    },
+
     handleConfirm(val) {
-      const visible = false
+      const visible = false;
       this.$emit('input', val, visible)
     }
   }

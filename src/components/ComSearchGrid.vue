@@ -2,16 +2,26 @@
   <div class="search_grid">
      <!-- search input -->
     <div class="input_wrap">
-      <div class="icon_wrap" :style="{width:indexWidth+'px'}"><i class="el-icon-search"></i></div>
-      <el-input 
+      <div 
+        class="icon_wrap"
+        @click="handleSearchData"
+        :style="{ width:indexWidth + 'px' }">
+        <i class="el-icon-search"></i>
+      </div>
+      <el-input
         v-model="leftVal"
         :placeholder="leftPlaceholder"
-        class="leftInput"
-        size="mini">
+        :style="{ width:leftInputWidth + 'px' }"
+        id="left"
+        size="mini" 
+        ref="leftInput">
       </el-input>
       <el-input 
         v-model="rightVal"
         :placeholder="rightPlaceholder"
+        class="rightInput"
+        id="right"
+        ref="rightInput"
         size="mini">
       </el-input>
     </div>
@@ -34,8 +44,7 @@
         <el-table-column
           v-for="col in columns"
           :key="col.prop"
-          :prop="col.prop"
-          :label="col.label">
+          v-bind="col">
         </el-table-column>
       </el-table>
     </div>
@@ -43,9 +52,12 @@
 </template>
 
 <script>
-
+//自己控制自己的状态
+//输入框输入后自定
 export default {
+  
   props: {
+    type: String,
     tableData: Array,
     columns: Array,
     showHeader: Boolean,
@@ -60,6 +72,7 @@ export default {
       value: '',
       text: '',
       indexWidth: '40',
+      leftInputWidth: '',
     }
   },
 
@@ -78,7 +91,32 @@ export default {
     }
   },
 
+  watch: {
+    leftVal(value, type = value) {
+      // this.handleInputChange(type, value);
+      //有type的情况
+      if (this.type) {
+
+      }
+      //无type的情况
+    }
+  },
+
+  created() {
+    const colums = this.columns;
+    if (colums && colums.length > 0 && colums[0].width) {
+      this.leftInputWidth = colums[0].width;
+    } else {
+      this.leftInputWidth = '110'
+    }
+    console.log(this)
+  },
+
   methods: {
+    clear() {
+      this.leftVal = this.rightVal = '';
+    },
+   
     handleRowClick(row, event, colu) {
       if (row) {
         this.$emit('pick', {
@@ -89,12 +127,22 @@ export default {
     },
    
     handleHeaderDragend(newWidth, oldWidth, column, event) {
-      console.log(column)
+      let vm = this;
       if (column.type === 'index') {
-        this.indexWidth = newWidth;
+        vm.indexWidth =`${newWidth}px`;
+      } else if (column.property === 'value') {
+        vm.leftInputWidth = `${newWidth - 2}px`;
       }
+    },
+
+    handleInputChange(type, data) {
+      this.$emit('search', {type: data})
+    },
+
+    handleSearchData() {
     }
-  }
+  },
+
 }
   
 </script>
@@ -104,12 +152,12 @@ export default {
   width 100%
   height 100%
   .input_wrap
-    padding 5px 14px 5px 0
+    padding 5px 18px 5px 0
     display flex
     .icon_wrap
-      // background-color pink
       text-align center
       font-size 14px
-    .leftInput
-      margin-right 5px
+    .rightInput
+      margin-left 4px
+      flex 1
 </style>

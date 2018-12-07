@@ -63,6 +63,7 @@ export default {
         this.mountPicker();
       }
       this.pickerVisible = this.picker.visible = true;
+      this.picker.clearSearchInput();
     },
 
     hidePicker() {
@@ -80,6 +81,8 @@ export default {
         this.pickerVisible = this.picker.visible = visible;
         this.emitInput(row);
       });
+      // console.log(this.$root)
+      // console.log(this.$parent.$data)
     },
 
     emitInput(row) {
